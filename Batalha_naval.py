@@ -37,3 +37,5 @@ def faz_jogada (tabuleiro, linha, coluna):
     else:
         tabuleiro [linha][coluna] = '-'
     return tabuleiro
+
+aaaaaaaa
