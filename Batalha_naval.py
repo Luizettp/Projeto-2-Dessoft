@@ -38,5 +38,14 @@ def faz_jogada (tabuleiro, linha, coluna):
         tabuleiro [linha][coluna] = '-'
     return tabuleiro
 
-#teste
-Chosen = 9
+#Posiciona Frota
+
+def posiciona_frota(frota):
+    tabuleiro = [[0] * 10 for _ in range(10)]
+    for x in frota:
+        for listona in frota[x]:
+            for supreme in listona:
+                i = supreme[0]
+                j = supreme[1]
+                tabuleiro[i][j] = 1
+    return tabuleiro
