@@ -38,7 +38,5 @@ def faz_jogada (tabuleiro, linha, coluna):
         tabuleiro [linha][coluna] = '-'
     return tabuleiro
 
-#dado é bobo
-dado_bobo = True
-if dado_bobo:
-    comit = False
+#teste
+Chosen = 9
