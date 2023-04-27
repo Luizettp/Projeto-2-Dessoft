@@ -49,3 +49,4 @@ def posiciona_frota(frota):
                 j = supreme[1]
                 tabuleiro[i][j] = 1
     return tabuleiro
+a
