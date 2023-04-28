@@ -63,3 +63,21 @@ def afundados(frota, tabuleiro):
             if afundado:
                 afundados += 1
     return afundados
+
+# Posição Válida
+
+def posicao_valida(frota, linha, coluna, orientacao, tamanho):
+    passarinho = define_posicoes(linha, coluna, orientacao, tamanho)
+
+    for passaro in passarinho:
+        if passaro[0]<0 or passaro[0]>9:
+            return False
+        if passaro[1]<0 or passaro[1]>9:
+            return False
+    
+    for f1 in frota:
+        for f2 in frota[f1]:
+            for f3 in f2:
+                if f3 in passarinho:
+                        return False
+    return True
