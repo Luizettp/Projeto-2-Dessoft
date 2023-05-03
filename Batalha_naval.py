@@ -127,3 +127,52 @@ for navio, quantidade in quantidade_navios.items():
             else:
                 frota = preenche_frota(frota, navio, linha, coluna, orientacao, tamanho_navios[navio])   
 print(frota)
+
+# O jogo
+
+
+jogando = True
+PosicoesAnteriores = []
+tabuleiro_oponente = posiciona_frota(frota_oponente)
+tabuleiro_jogador = posiciona_frota(frota)
+while jogando:
+    def monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente):
+        texto = ''
+        texto += '   0  1  2  3  4  5  6  7  8  9         0  1  2  3  4  5  6  7  8  9\n'
+        texto += '_______________________________      _______________________________\n'
+
+        for linha in range(len(tabuleiro_jogador)):
+            jogador_info = '  '.join([str(item) for item in tabuleiro_jogador[linha]])
+            oponente_info = '  '.join([info if str(info) in 'X-' else '0' for info in tabuleiro_oponente[linha]])
+            texto += f'{linha}| {jogador_info}|     {linha}| {oponente_info}|\n'
+        return texto
+    
+    #Tabuleiro
+    tabuleiro = monta_tabuleiros(tabuleiro_jogador, tabuleiro_oponente)
+    print (tabuleiro)
+
+    # Ataque
+    repetir = True
+    while repetir:
+        Linha = int(input('Em qual linha deseja atacar? '))
+        while Linha <0 or Linha >9:
+            print ('Linha inválida!')
+            Linha = int(input('Em qual linha deseja atacar? '))
+
+        Coluna = int(input('Em qual coluna deseja atacar? '))
+        while Coluna <0 or Coluna >9:
+            print ('Coluna inválida!')
+            Coluna = int(input('Em qual coluna deseja atacar? '))
+        if [Linha,Coluna] not in PosicoesAnteriores:
+            PosicoesAnteriores.append([Linha, Coluna])
+            repetir = False
+        
+        else:
+            print (f'A posição linha {Linha} e coluna {Coluna} já foi informada anteriormente') 
+
+    tabuleiro_oponente =  faz_jogada (tabuleiro_oponente, Linha, Coluna)
+    Afundados = afundados(frota_oponente, tabuleiro_oponente)
+    if Afundados == 10:
+        print ('Parabéns! Você derrubou todos os navios do seu oponente!')
+        jogando = False
+            
