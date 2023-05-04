@@ -151,7 +151,9 @@ frota_oponente = {
 }
 
 jogando = True
+import random 
 PosicoesAnteriores = []
+PosicoesAnterioresOponente = []
 tabuleiro_oponente = posiciona_frota(frota_oponente)
 tabuleiro_jogador = posiciona_frota(frota)
 while jogando:
@@ -190,8 +192,23 @@ while jogando:
             print (f'A posição linha {Linha} e coluna {Coluna} já foi informada anteriormente') 
 
     tabuleiro_oponente =  faz_jogada (tabuleiro_oponente, Linha, Coluna)
-    Afundados = afundados(frota_oponente, tabuleiro_oponente)
-    if Afundados == 10:
+    Afundados_jogador = afundados(frota_oponente, tabuleiro_oponente)
+    if Afundados_jogador == 10:
         print ('Parabéns! Você derrubou todos os navios do seu oponente!')
         jogando = False
+    else: 
+        repetir = True
+        while repetir: 
+            linha = random.randint(0, 9)
+            coluna = random.randint(0, 9)
+            if [linha,coluna] not in PosicoesAnterioresOponente:
+                PosicoesAnterioresOponente.append([Linha, Coluna])
+                repetir = False
+        print(f'Seu oponente está atacando na linha {linha} e coluna {coluna}')
+        tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha,coluna)
+        afundados_oponente = afundados(frota,tabuleiro_jogador)
+        if Afundados_jogador == 10:
+            print ('Xi! O oponente derrubou toda a sua frota =(')
+            jogando = False
+
             
