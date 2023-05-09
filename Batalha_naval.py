@@ -208,7 +208,7 @@ while jogando:
         print(f'Seu oponente está atacando na linha {linha} e coluna {coluna}')
         tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha,coluna)
         afundados_oponente = afundados(frota,tabuleiro_jogador)
-        if Afundados_oponente == 10:
+        if afundados_oponente == 10:
             print ('Xi! O oponente derrubou toda a sua frota =(')
             jogando = False
 
