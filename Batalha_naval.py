@@ -152,7 +152,6 @@ frota_oponente = {
 
 jogando = True
 import random 
-random.seed(2)
 PosicoesAnteriores = []
 PosicoesAnterioresOponente = []
 tabuleiro_oponente = posiciona_frota(frota_oponente)
