@@ -152,6 +152,7 @@ frota_oponente = {
 
 jogando = True
 import random 
+random.seed(2)
 PosicoesAnteriores = []
 PosicoesAnterioresOponente = []
 tabuleiro_oponente = posiciona_frota(frota_oponente)
@@ -202,7 +203,7 @@ while jogando:
             linha = random.randint(0, 9)
             coluna = random.randint(0, 9)
             if [linha,coluna] not in PosicoesAnterioresOponente:
-                PosicoesAnterioresOponente.append([Linha, Coluna])
+                PosicoesAnterioresOponente.append([linha, coluna])
                 repetir = False
         print(f'Seu oponente está atacando na linha {linha} e coluna {coluna}')
         tabuleiro_jogador = faz_jogada(tabuleiro_jogador,linha,coluna)
